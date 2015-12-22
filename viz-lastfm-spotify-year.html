@@ -1,0 +1,34 @@
+<head>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("body", 600, 300);
+	var data = [ { "artist": "Fanta Vier", "channel": "last.fm", "scrobbles": "281"  },
+				 { "artist": "Jazzkantine", "channel": "last.fm", "scrobbles": "243"  }, 
+				 { "artist": "Patti Smith", "channel": "last.fm", "scrobbles": "244" },
+				 { "artist": "Kraftklub", "channel": "last.fm", "scrobbles": "187"  },
+				 { "artist": "The New Basement Tapes", "channel": "last.fm", "scrobbles": "175" },
+	   			 { "artist": "Fanta Vier", "channel": "spotify", "scrobbles": "261"  },
+				 { "artist": "Jazzkantine", "channel": "spotify", "scrobbles": "234"  }, 
+				 { "artist": "Patti Smith", "channel": "spotify", "scrobbles": "204"  },
+				 { "artist": "Kraftklub", "channel": "spotify", "scrobbles": "192"  },
+				 { "artist": "The New Basement Tapes", "channel": "spotify", "scrobbles": "161"  } ];
+    var chart = new dimple.chart(svg, data);
+    var xAxis = chart.addCategoryAxis("x", ["artist", "channel"]);
+    var yAxis = chart.addMeasureAxis("y", "scrobbles");
+    yAxis.tickFormat = ".3";
+    yAxis.ticks = 6;
+    chart.addSeries("channel", dimple.plot.bar);
+    chart.addLegend(65, 10, 480, 20, "right");
+    chart.draw(1500);
+
+    xAxis.shapes.selectAll("text").each(function(){
+    	var rec = this.getBBox();
+        d3.select(this)
+        	.attr("transform", "rotate(0) translate(" +(-rec.width/2) +", 0)");
+    })
+
+  </script>
+</body>
