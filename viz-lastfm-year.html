@@ -13,6 +13,7 @@
     var xAxis = chart.addCategoryAxis("x", "year");
     var yAxis = chart.addMeasureAxis("y", "scrobbles");
     yAxis.tickFormat = ".5";
+    yAxis.ticks = 6;
     chart.addSeries(null, dimple.plot.bar);
     chart.draw(500);
   </script>
