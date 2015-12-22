@@ -1,0 +1,29 @@
+<head>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("body", 300, 200);
+	var data = [ 
+				 { "artist": "Elvis Costello", "scrobbles": "49" },
+				 { "artist": "Fanta Vier", "scrobbles": "47"  },
+				 { "artist": "The Smith", "scrobbles": "41"  }, 
+				 { "artist": "David Bowie", "scrobbles": "40"  }, 
+				 { "artist": "Björk", "scrobbles": "37"  }, 
+				 { "artist": "Elvis Costello & The Attractions", "scrobbles": "35"  }, 
+				 { "artist": "Red Hot Chili Peppers", "scrobbles": "31"  }, 
+				 { "artist": "Velvet Underground", "scrobbles": "31"  }, 
+				 { "artist": "Talking Heads", "scrobbles": "29"  },
+				 { "artist": "Pixies", "scrobbles": "52"  }
+				 ];
+    var chart = new dimple.chart(svg, data);
+    chart.setMargins("150px", "10px", "10px", "20px");
+    var xAxis = chart.addCategoryAxis("y", "artist");
+    var yAxis = chart.addMeasureAxis("x", "scrobbles");
+    yAxis.tickFormat = ".2";
+    yAxis.ticks = 5;
+    chart.addSeries(null, dimple.plot.bar);
+    chart.draw(1500);
+  </script>
+</body>
