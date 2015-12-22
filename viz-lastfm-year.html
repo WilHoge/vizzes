@@ -1,0 +1,19 @@
+<head>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("body", 380, 200);
+	var data = [ { "year": "2012", "scrobbles": "7587"  }, 
+				 { "year": "2013", "scrobbles": "12568" },
+				 { "year": "2014", "scrobbles": "7187"  },
+				 { "year": "2015", "scrobbles": "5485"  } ];
+    var chart = new dimple.chart(svg, data);
+    var xAxis = chart.addCategoryAxis("x", "year");
+    var yAxis = chart.addMeasureAxis("y", "scrobbles");
+    yAxis.tickFormat = ".5";
+    chart.addSeries(null, dimple.plot.bar);
+    chart.draw(500);
+  </script>
+</body>
